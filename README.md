@@ -1,5 +1,9 @@
 # GithubAction for PHPStan
 
+**NETHERGAMES is currently providing reasonable support for this through the issue tracker. However, please note we have the right to deny any support as this is provided in the public domain without any support implied.**
+
+**Credits for the Docker-Image goes to Oskar Stark - thank you for what you've done!**
+
 ## Usage
 
 You can use it as a Github Action like this:
