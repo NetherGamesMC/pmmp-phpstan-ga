@@ -41,15 +41,40 @@ _to use a phpstan.neon.dist configuration file:_
 
 just drop the `phpstan.neon.dist` in your repository root and it will be taken into account.
 
+**Requirements:**
 
-**You can copy/paste the .github folder (under examples/) to your project and thats all!**
+You're by default required to autoload your classes. In the case of PMMP, we recommend using `composer.json` to autoload the classes like so:
 
-## Docker
+```json
+{
+    "name": "vendorname/projectname",
+    "description": "your description",
+    "type": "project",
+    "authors": [
+        {
+            "name": "YourName"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.2.0",
+        "pocketmine/math": "0.2.3"
+    },
+    "autoload": {
+        "classmap": [
+            "path/to/class.php",
+            "path/to/class/two.php",
+            "path/to/class/three.php"
+        ]
+    },
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/pmmp/Math"
+        }
+    ]
+} 
+```
 
-A Docker-Image is built automatically and located here:
-https://hub.docker.com/r/oskarstark/phpstan-ga
-
-You can run it in any given directory like this:
-
-`docker run --rm -it -w=/app -v ${PWD}:/app oskarstark/phpstan-ga:latest analyse src/ --level=5`
-
+This allows you to autoload the PMMP repositories and it's dependancies by default. Although it's recommended that if you're dependant on a specific library, specifically add that in your `require` section. You can also autoload with PSR-4. You can google how composer autoloading works for more information. A tutorial for that will not be provided.
